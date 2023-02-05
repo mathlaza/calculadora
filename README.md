@@ -46,7 +46,7 @@ Ao terminar o projeto básico do vídeo, alguns desafios e oportunidade de aperf
 * <span style="color:#58a6ff">Css com algumas linhas desnecessárias;</span>
 
 <br>
-Os problemas foram resolvidos com os métodos <span style="color:#58a6ff">Number()</span> e <span style="color:#58a6ff">toFixed()</span> do Javascript. Por último foi implementado Typescript com o propósito de praticar.
+Os problemas foram resolvidos com os métodos <span style="color:#58a6ff">Number()</span> e <span style="color:#58a6ff">toFixed()</span> do Javascript. Por último, foi implementado Typescript com o propósito de praticar.
 </div style="font-size:16px">
 
 <br>
