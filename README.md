@@ -21,10 +21,6 @@
    </p>
 
 <!-- Índice -->
-# Índice
-
-* [Sobre o projeto](#sobre-o-projeto)
-* [Tecnologias utilizadas](#tecnologias-utilizadas)
 
 <br>
 
