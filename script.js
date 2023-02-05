@@ -1,85 +1,82 @@
-let runningTotal = 0;
-let buffer = '0';
-let previousOperator;
-
-const screen = document.querySelector('.screen');
-
+"use strict";
+// exports.__esModule = true;
+var runningTotal = 0;
+var buffer = '0';
+var previousOperator;
+var screen = document.querySelector('.screen');
 function buttonClick(value) {
-  if (isNaN(value)) handleSymbol(value);
-  else handleNumber(value);
-
-  screen.innerText = buffer;
+    if (isNaN(value))
+        handleSymbol(value);
+    else
+        handleNumber(value);
+    screen.innerText = buffer;
 }
-
 function handleSymbol(symbol) {
-  switch (symbol) {
-    case 'C':
-      buffer = '0';
-      runningTotal = 0;
-      break;
-
-    case '=':
-      if (previousOperator === null) {
-        return
-      }
-      flushOperation(parseInt(buffer));
-      previousOperator = null;
-      buffer = runningTotal;
-      runningTotal = 0;
-      break;
-
-    case '←':
-      if (buffer.length === 1) {
-        buffer = '0';
-      } else {
-        buffer = buffer.substring(0, buffer.length - 1);
-      }
-      break;
-
-    case '+':
-    case '−':
-    case '×':
-    case '÷':
-      handleMath(symbol);
-      break;
-  }
+    switch (symbol) {
+        case 'C':
+            buffer = '0';
+            runningTotal = 0;
+            break;
+        case '=':
+            if (previousOperator === null) {
+                return;
+            }
+            flushOperation(parseInt(buffer));
+            previousOperator = null;
+            buffer = runningTotal;
+            runningTotal = 0;
+            break;
+        case '←':
+            if (buffer.length === 1) {
+                buffer = '0';
+            }
+            else {
+                buffer = buffer.substring(0, buffer.length - 1);
+            }
+            break;
+        case '+':
+        case '−':
+        case '×':
+        case '÷':
+            handleMath(symbol);
+            break;
+    }
 }
-
 function handleMath(symbol) {
-  if (buffer === '0') return;
-
-  const intBuffer = parseFloat(buffer);
-
-  if (runningTotal === 0) runningTotal = intBuffer;
-  else flushOperation(intBuffer);
-
-  previousOperator = symbol;
-  buffer = '0';
+    if (buffer === '0')
+        return;
+    var intBuffer = parseFloat(buffer);
+    if (runningTotal === 0)
+        runningTotal = intBuffer;
+    else
+        flushOperation(intBuffer);
+    previousOperator = symbol;
+    buffer = '0';
 }
-
 function flushOperation(intBuffer) {
-  if (previousOperator === '+') {
-    runningTotal = Number((runningTotal + intBuffer).toFixed(3));
-  } else if (previousOperator === '−') {
-    runningTotal = Number((runningTotal - intBuffer).toFixed(3));
-  } else if (previousOperator === '×') {
-    runningTotal = Number((runningTotal * intBuffer).toFixed(3));
-  } else if (previousOperator === '÷') {
-    runningTotal = Number((runningTotal / intBuffer).toFixed(3));
-  }
+    if (previousOperator === '+') {
+        runningTotal = Number((runningTotal + intBuffer).toFixed(3));
+    }
+    else if (previousOperator === '−') {
+        runningTotal = Number((runningTotal - intBuffer).toFixed(3));
+    }
+    else if (previousOperator === '×') {
+        runningTotal = Number((runningTotal * intBuffer).toFixed(3));
+    }
+    else if (previousOperator === '÷') {
+        runningTotal = Number((runningTotal / intBuffer).toFixed(3));
+    }
 }
-
-function handleNumber(numberString) {
-  if (buffer === '0') buffer = numberString;
-  else buffer += numberString;
+function handleNumber(value) {
+    if (buffer === '0')
+        buffer = value;
+    else
+        buffer += value;
 }
-
 function init() {
-  document.querySelector('.calc-buttons').addEventListener('click', function (event) {
-    buttonClick(event.target.innerText);
-  })
+    document.querySelector('.calc-buttons').addEventListener('click', function (event) {
+        var input = event.target;
+        buttonClick(input.innerText);
+    });
 }
-
 init();
-
-// export {}; // Indicates that the file is an ES module
