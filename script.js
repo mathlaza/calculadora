@@ -5,7 +5,7 @@ var buffer = '0';
 var previousOperator;
 var screen = document.querySelector('.screen');
 function buttonClick(value) {
-    if (isNaN(value))
+    if (isNaN(parseInt(value)))
         handleSymbol(value);
     else
         handleNumber(value);
@@ -21,9 +21,10 @@ function handleSymbol(symbol) {
             if (previousOperator === null) {
                 return;
             }
-            flushOperation(parseInt(buffer));
+            var intBuffer = parseFloat(buffer);
+            flushOperation(intBuffer);
             previousOperator = null;
-            buffer = runningTotal;
+            buffer = JSON.stringify(runningTotal);
             runningTotal = 0;
             break;
         case '←':

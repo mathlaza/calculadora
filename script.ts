@@ -1,11 +1,11 @@
 let runningTotal = 0;
-let buffer: any = '0';
+let buffer: string = '0';
 let previousOperator: string | null;
 
 const screen = document.querySelector<HTMLElement>('.screen');
 
-function buttonClick(value: any): void {
-  if (isNaN(value)) handleSymbol(value);
+function buttonClick(value: string): void {
+  if (isNaN(parseInt(value))) handleSymbol(value);
   else handleNumber(value);
 
   screen!.innerText = buffer;
@@ -22,9 +22,10 @@ function handleSymbol(symbol: string) {
       if (previousOperator === null) {
         return
       }
-      flushOperation(parseInt(buffer));
+      const intBuffer: string | number = parseFloat(buffer);
+      flushOperation(intBuffer);
       previousOperator = null;
-      buffer = runningTotal;
+      buffer = JSON.stringify(runningTotal);
       runningTotal = 0;
       break;
 
@@ -48,7 +49,7 @@ function handleSymbol(symbol: string) {
 function handleMath(symbol: string) {
   if (buffer === '0') return;
 
-  const intBuffer = parseFloat(buffer);
+  const intBuffer: string | number = parseFloat(buffer);
 
   if (runningTotal === 0) runningTotal = intBuffer;
   else flushOperation(intBuffer);
