@@ -26,7 +26,7 @@
 
 <!-- Sobre o projeto -->
 # Sobre o projeto
-<div style="font-size:16px">Aplicacão desenvolvida com auxílio do seguinte <a href="https://www.youtube.com/watch?v=sBJmRD7kNTk">vídeo</a>, no intuito de estudar e treinar as tecnologias utilizadas.
+<div style="font-size:16px">Aplicação desenvolvida com auxílio do seguinte <a href="https://www.youtube.com/watch?v=sBJmRD7kNTk">vídeo</a>, no intuito de estudar e treinar as tecnologias utilizadas.
 <br>
 <br>
 Trata-se de uma calculadora com operações aritméticas simples.
